@@ -1,11 +1,28 @@
 # Import dependencies
 
-import matplotlib
+import matplotlib.pyplot as plt
 import random
 import pandas as pd
 
 print("Welcome to the Monty Hall Problem!")
 playstyle = input('Would you like to (1) play manually, or (2) run a simulation? (choose 1 or 2) ')
+
+
+def run_sim(switch):
+    choices = ['car','donkey','donkey']
+    initial_choice = random.choice(choices)
+    # print(f"Initial choice: {initial_choice}")
+    choices.remove(initial_choice)
+    choices.remove('donkey')
+    remaining_choice = choices[0]
+    # print(f"Remaining choice: {remaining_choice}")
+
+    if switch == 'n':
+        prize = initial_choice
+    elif switch == 'y':
+        prize = choices[0]
+    
+    return(initial_choice, prize)
 
 ## Manual play
 if int(playstyle) == 1: 
@@ -66,12 +83,58 @@ if int(playstyle) == 1:
     print('')
 
 
+
 ## Simulation
 elif int(playstyle) == 2:
     # print("Welcome to the Monty Hall Problem Simulator!")
     # The purpose of this simulator is to demonstrate the outcome of the Monty Hall problem given a large number of playthroughs.
 
-    choices = ['car','donkey','donkey']
+    num_sims = input("Please enter the number of simulations you would like to run: ")
+    switch = input("Please indicate whether the simulator will switch to the remaining door (y/n) ")
+
+    results = []
+    num_sims = int(num_sims)
+    for n in range(num_sims):
+        results.append(run_sim(switch))
+
+    # print(results)
+    initial_choices = []
+    for result in results:
+        initial_choices.append(result[0])
+    print(initial_choices)
+
+    initial_cars = 0
+    initial_donkeys = 0
+    for choice in initial_choices:
+        if choice == 'donkey':
+            initial_donkeys += 1
+        elif choice == "car":
+            initial_cars += 1
+
+    final_prizes = []
+    for result in results:
+        final_prizes.append(result[1])
+    print(final_prizes)
+
+    total_donkey_prizes = 0
+    total_car_prizes = 0
+    for prize in final_prizes:
+        if prize == "donkey":
+            total_donkey_prizes += 1
+            percent_donkeys = 100 * total_donkey_prizes / num_sims
+        elif prize == "car":
+            total_car_prizes += 1
+            percent_cars = 100 * total_car_prizes / num_sims
+    
+    print(f"Total car prizes: {total_car_prizes} ({percent_cars}%)")
+    print(f"Total donkey prizes: {total_donkey_prizes} ({percent_donkeys})%")
+
+    df = pd.DataFrame(data = {'Total Prizes': [total_car_prizes, total_donkey_prizes], 'Percent':[str(percent_cars) + "%", str(percent_donkeys) + "%"]}, index = ["Cars", "Donkeys"])
+    print(df)
+
+    ax = df.plot(kind = 'bar', title = f"Prize Results for {num_sims} Simulations")
+    plt.show()
+
     # print(choices)
 
     # # Remove the chosen item from the list
