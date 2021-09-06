@@ -5,7 +5,12 @@ import random
 import pandas as pd
 
 print("Welcome to the Monty Hall Problem!")
-playstyle = input('Would you like to (1) play manually, or (2) run a simulation? (choose 1 or 2) ')
+while True:
+    playstyle = input('Would6 you like to (1) play manually, or (2) run a simulation? (choose 1 or 2) ')
+    if playstyle == "1" or playstyle == "2":
+        break
+    else:
+        print("You must choose either 1 or 2.")
 
 # Create a function that runs a simulation of the Monty Hall problem. The only parameter that it takes is "switch", which determines whether the simulator switches doors after the unchosen "donkey door" is opened. The function returns a tuple containing the initial choice.
 
@@ -21,7 +26,7 @@ def run_sim(switch):
     if switch == 'n':
         prize = initial_choice
     elif switch == 'y':
-        prize = choices[0]
+        prize = remaining_choice
     
     return(initial_choice, prize)
 
@@ -33,17 +38,23 @@ if int(playstyle) == 1:
     choices = ['donkey','donkey','car']
     random.shuffle(choices)
     # DEV ONLY: print the shuffled choices
-    print(choices)
+    # 1print(choices)
 
     # Ask the player to choose a door
-    choice = input("Before you are three doors. Behind one of them is a new car. Behind the other two is a donkey. You will win whatever is behind the door you choose! Please choose a door (1, 2, or 3): ")
-    # DEV ONLY: indicate which prize is behind the door (car or donkey). Remember that the actual prize is indexed at one position lower than the door number choice.
-    print(f'Chosen prize: {choices[int(choice) - 1]}')
+    while True:
+        choice = input("Before you are three doors. Behind one of them is a new car. Behind the other two is a donkey. You will win whatever is behind the door you choose! Please choose a door (1, 2, or 3): ")
+        if choice == "1" or choice == "2" or choice == "3":
+            break
+        else:
+            print("Your choice must be either 1, 2 or 3.")
+        # DEV ONLY: indicate which prize is behind the door (car or donkey). Remember that the actual prize is indexed at one position lower than the door number choice.
+        # print(f'Chosen prize: {choices[int(choice) - 1]}')
     # Inform the player which door they have chosen.
     print(f'You have chosen Door #{choice}')
     # Open one of the non-selected doors. If a car is behind the selected door, then one of the two remaining doors with a donkey will be opened. If a donkey is behind the selected door, then the sole remaining door with a donkey will be opened. 
     print(f"Before we open Door #{choice}, let's open one of the doors that you did not choose!")
     if int(choice) == 1:
+        # If door 1 was selected, then we must open either door 2 or door 3. 
         # randomize which of the remaining doors 2 and 3 will be "checked" first. Remember that doors 2 and 3 are indexed at position 1 and 2 of the choices list, respectively. Therefore, we create a list of the remaining doors, shuffle that list, then check the first door (index 0) of the shuffled list. If that door has a donkey, open it. If it does not, then open the door at index 1.
         other_doors = [1, 2]
         random.shuffle(other_doors)
@@ -73,13 +84,18 @@ if int(playstyle) == 1:
         else:
             print(f"We have opened Door #{other_doors[1] + 1}, which reveals a donkey! Good job dodging that one!")
             remaining_door = other_doors[0]
-    switch = input(f'Would you like to switch to Door #{remaining_door + 1} (y/n)?: ')
-    if switch == 'y':
-        prize = choices[remaining_door]
-        print(f'You have chosen to switch to Door #{remaining_door + 1}. The door opens and... You have won a {prize}!')
-        print(f'Your original selection of Door #{choice} was a {choices[int(choice) - 1]}.')
-    elif switch == 'n':
-        print(f'You have chosen to stay with Door #{choice}. The door opens and... You have won a {choices[int(choice) - 1]}!')
+    while True:
+        switch = input(f'Would you like to switch to Door #{remaining_door + 1} (y/n)?: ')
+        if switch == 'y':
+            prize = choices[remaining_door]
+            print(f'You have chosen to switch to Door #{remaining_door + 1}. The door opens and... You have won a {prize}!')
+            print(f'Your original selection of Door #{choice} was a {choices[int(choice) - 1]}.')
+            break
+        elif switch == 'n':
+            print(f'You have chosen to stay with Door #{choice}. The door opens and... You have won a {choices[int(choice) - 1]}!')
+            break
+        else:
+            print('Invalid entry. You must choose either "y" or "n".')
 
     print('')
 
@@ -90,8 +106,20 @@ elif int(playstyle) == 2:
     # print("Welcome to the Monty Hall Problem Simulator!")
     # The purpose of this simulator is to demonstrate the outcome of the Monty Hall problem given a large number of playthroughs.
 
-    num_sims = input("Please enter the number of simulations you would like to run: ")
-    switch = input("Please indicate whether the simulator will switch to the remaining door (y/n) ")
+    while True:
+        num_sims = input("Please enter the number of simulations you would like to run: ")
+        try: 
+            num_sims = int(num_sims)
+            break
+        except:
+            print("You must enter an integer number.")
+
+    while True:
+        switch = input("Please indicate whether the simulator will switch to the remaining door (y/n) ")
+        if switch == 'y' or switch == 'n':
+            break
+        else:
+            print('You must enter "y" or "n".')
 
     results = []
     num_sims = int(num_sims)
