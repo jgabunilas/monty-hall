@@ -67,3 +67,7 @@ The basic outline of the program is as follows:
 8. The program prints out the total numbers and percentages of car and donkey prizes.
 9. The program creates a Pandas dataframe with **Total Prizes** and **Percent**.
 10. The program creates a simple bar graph that plots the number of car and donkey prizes based on the number of simulations run.
+
+![](simulation.jpg)
+
+![](prize_plot.jpeg)
