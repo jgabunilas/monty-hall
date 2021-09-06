@@ -6,7 +6,7 @@ import pandas as pd
 
 print("Welcome to the Monty Hall Problem!")
 while True:
-    playstyle = input('Would6 you like to (1) play manually, or (2) run a simulation? (choose 1 or 2) ')
+    playstyle = input('Would you like to (1) play manually, or (2) run a simulation? (choose 1 or 2) ')
     if playstyle == "1" or playstyle == "2":
         break
     else:
@@ -130,7 +130,7 @@ elif int(playstyle) == 2:
     initial_choices = []
     for result in results:
         initial_choices.append(result[0])
-    print(initial_choices)
+    # print(initial_choices)
 
     initial_cars = 0
     initial_donkeys = 0
@@ -143,7 +143,7 @@ elif int(playstyle) == 2:
     final_prizes = []
     for result in results:
         final_prizes.append(result[1])
-    print(final_prizes)
+    # print(final_prizes)
 
     total_donkey_prizes = 0
     total_car_prizes = 0
@@ -159,9 +159,9 @@ elif int(playstyle) == 2:
     print(f"Total donkey prizes: {total_donkey_prizes} ({percent_donkeys})%")
 
     df = pd.DataFrame(data = {'Total Prizes': [total_car_prizes, total_donkey_prizes], 'Percent':[str(percent_cars) + "%", str(percent_donkeys) + "%"]}, index = ["Cars", "Donkeys"])
-    print(df)
+    # print(df)
 
-    ax = df.plot(kind = 'bar', title = f"Prize Results for {num_sims} Simulations")
+    ax = df.plot(kind = 'bar', title = f"Prize Results for {num_sims} Simulations, switch = {switch}")
     plt.show()
 
     # print(choices)

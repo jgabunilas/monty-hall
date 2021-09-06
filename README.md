@@ -63,4 +63,7 @@ The basic outline of the program is as follows:
     * The function returns a tuple containing `initial_choice` and `prize`.
 5. The returned value of the `run_sim()` function call is appended to the `results` list.
 6. After all simulations have been executed, the program iterates through the the `results` list and constructs a `final_prizes` list using the `prize` values from each tuple in `results`, which is indexed as position 1.
-7. The program iterates through the `final_prizes` list and 
+7. The program iterates through the `final_prizes` list and sums the total number of donkeys and cars. It stores these sums as `total_donkey_prizes` and `total_car_prizes`, respectively. It also calculates the percentage of prizes are donkeys and cars, stored these as `percent_donkeys` and `percent_cars`.
+8. The program prints out the total numbers and percentages of car and donkey prizes.
+9. The program creates a Pandas dataframe with **Total Prizes** and **Percent**.
+10. The program creates a simple bar graph that plots the number of car and donkey prizes based on the number of simulations run.
