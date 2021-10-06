@@ -1,3 +1,5 @@
+## Written by Jason Gabunilas
+
 # Import dependencies - matplotlib, the random module, and pandas
 
 import matplotlib.pyplot as plt
