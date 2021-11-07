@@ -48,7 +48,7 @@ The basic outline of the program is as follows:
 
 ## Part 2: Simulation
 
-Part 2 allows the user to run multiple iterative simulations of the Monty Hall problem. It is launched by selection option 2 when prompted by the game. 
+Part 2 allows the user to run multiple iterative simulations of the Monty Hall problem. It is launched by selecting option 2 when prompted by the game. 
 
 The basic outline of the program is as follows:
 1. The player is prompted via `input()` to enter the number of simulations, which is stored in the variable `num_sims`. Data validation via a try and except clause ensures that the entry is an integer number.
