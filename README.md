@@ -4,7 +4,7 @@
 ## Introduction
 
 The Monty Hall problem is a classic problem in probability theory. Modeled as a game of chance and named after the eponymous game show host [Monty Hall](https://en.wikipedia.org/wiki/Monty_Hall), it has sparked debate, discussion, and discourse between academics and laymen alike. This simple exercise is a Python implementation of the Monty Hall problem that implements two primary functionalities:
-1. A functional implementation the game which allows the user to play through the game
+1. A functional implementation which allows the user to play through the game
 2. A simulator that runs through a number of iterations of the game
 
 This exercise is not intended to expand upon existing knowledge of the Monty Hall problem, which as been thoroughly solved both explicity and computationally. Instead, it is meant to showcase Python syntax as well as demonstrate basic use of Pandas dataframes and plotting functions. 
