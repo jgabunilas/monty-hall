@@ -179,7 +179,7 @@ elif int(playstyle) == 2:
         elif choice == "car":
             initial_cars += 1
 
-    # Createa a list of final prices, which is the second (1-indexed) onject of each simulation result tuple in the results list
+    # Create a list of final prices, which is the second (1-indexed) onject of each simulation result tuple in the results list
     final_prizes = []
     for result in results:
         final_prizes.append(result[1])
