@@ -1,5 +1,5 @@
 # The Monty Hall Problem
-### Written by Jason Gabunilas
+Written by Jason Gabunilas
 
 ## Introduction
 
