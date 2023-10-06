@@ -19,8 +19,8 @@ Monty Hall
 
 While there are multiple variations of the problem, most incarnations (and the one used in this exercise) are based on the following premise:
 
-1. The game show host presents the player with three doors and is told that two of the doors have a goat behind them, while the remaining door has a car. The player will win the prize behind the door that he or she choses, and thus the player's objective is to choose the door that leads to the car.
-2. The player selects a door.
+1. The game show host presents the player with three doors and is told that two of the doors have a goat behind them, while the remaining door has a car. The player will win the prize behind the door that he or she chooses, and thus the player's objective is to choose the door that leads to the car.
+2. The player selects one of the three doors.
 3. Before revealing what is behind the door that was selected by the player, the host first opens **one** of the doors that the player *did not* select. The door that the host opens always reveals a goat.
 4. The host asks the player if he or she would like to switch to the final remaining door, or stay with the door that he or she originally selected.
 5. The player decides whether to stay with the current door or switch to the other unopened door.
